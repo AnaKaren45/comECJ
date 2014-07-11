@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title> Armado | Pc</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Starter files for implementing Twitter Bootstrap's Carousel -- using Bootstrap version 2.0.4">
+    <meta name="author" content="David Cochran for webdesign.tutsplus.com">
+
+    <!-- Le styles -->
+    {% block cabesa %}<script src="{{STATIC_URL}}jquery.min.js"></script>{% endblock %}
+    
+    <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+        background-color: #333333;
+      }
+    </style>
+    <link href="/static/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+  </head>
+
+  
+{% block carrusel %}
+    <div class="container">
+      <div id="this-carousel-id" class="carousel slide">
+        <div class="carousel-inner">
+          <div class="item active">
+            <img src="/static/bootstrap/img/03.jpg"/>
+            </a>
+            <div class="carousel-caption">
+            </div>
+          </div>
+          <div class="item">
+              <img src="/static/bootstrap/img/04.jpg"/>
+            </a>
+            <div class="carousel-caption">
+            </div>
+          </div>
+          <div class="item">
+            <a href="http://hubblesite.org/gallery/album/entire/pr2003010i/npp/128/">
+              <img src="/static/bootstrap/img/05.jpg" alt="Light Echo" />
+            </a>
+            <div class="carousel-caption">
+            </div>
+          </div>
+          
+        </div><
+        
+          <a class="carousel-control left" href="#this-carousel-id" data-slide="prev">&lsaquo;</a>
+          <a class="carousel-control right" href="#this-carousel-id" data-slide="next">&rsaquo;</a>
+      </div><!-- .carousel -->
+      <!-- end carousel -->
+{% endblock %}
+{% block titulo %}
+	<h1>ingresar al sistema</h1>
+{% endblock %}
+{% block encabezado %}
+	<p>bienbenido al sistema</p>
+{% endblock %}
+{% block cuerpo %}
+	<div class="row">
+		<div class="span4"></div>
+			<div class="span5">
+				<center><span style="color: white;">
+				<form id='formulario' method='post' action=''>
+					{% csrf_token%}
+					<table>
+						{{form}}
+					</table>
+					<p> <input type='submit' value='ingresar'> </p>
+				</form>
+			</div>
+		<div class="span3"></div>
+
+	</div>
+	
+{% endblock %}
+  </body>
+</html>
+

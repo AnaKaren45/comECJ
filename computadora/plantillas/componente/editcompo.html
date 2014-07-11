@@ -1,0 +1,18 @@
+{% extends 'base3.html' %}
+{% block cuerpo %}
+<center><span style="color: white;">
+	<h2>Modificar Componentes</h2>
+
+		<form action="." method="POST">
+			{% csrf_token %}
+			{{formulario.as_p}}
+			<button type="submit" class="btn btn-small btn-primary">guardar</button>
+			<button type="reset" class="btn btn-small btn-primary">borrar</button>
+			
+		</form>
+		<a href="/componente/page/1/">Regresar al lista de Componentes</a>	
+<br>
+		{{informacion}}
+<br>
+		
+{% endblock %}

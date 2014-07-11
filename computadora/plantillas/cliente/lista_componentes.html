@@ -1,0 +1,90 @@
+{% extends "index.html" %}
+{% block title %}Lista de Accesorios {% endblock %}
+{% block contenido %}
+<script>
+//<a href="/confirmar/compra/">Confirmar Compra</a>
+function confirmar()
+{
+	$.get("/confirmar/compra1/",function(data)
+	{
+		$("#cuerpo").html(data);
+	});
+}
+function enviar(id,cantidad)
+{
+	$.get("/cliente/carrito/add1/"+id+"/"+cantidad+"/",function(data)
+	{
+		$("#carrito").html(data);
+	});
+return false;
+}
+function comprar(id,nombre,img)
+{
+				$.Dialog({
+									shadow: true,
+									overlay: false,
+									draggable: true,
+									icon: '<span class="icon-dollar"></span>',
+									title: 'Draggable window',
+									width: 400,
+									height: 300,
+									padding: 10,
+									content: '',
+									onShow: function(){
+									var content = '<form id="form1" onsubmit="return enviar('+id+',cantidad.value);">'+
+									'<label>'+nombre+'</label>'+
+									'<img src="{{MEDIA_URL}}'+img+'" width="120px" heigth="120px">'+
+									'<label>Cantidad</label>' +
+									'<div class="input-control text"><input type="text" name="cantidad"><button class="btn-clear"></button></div>' +
+									'<button class="primary" onclick="$.Dialog.close()">Añadir a Carrito</button>'+
+									'<button onclick="$.Dialog.close()">Cancelar</button></form>';
+									$.Dialog.title("Añadir a Carrito");
+									$.Dialog.content(content);
+									}
+								});
+}
+</script>
+<div class="example">
+<div id="carrito_content">
+        <h4>Accesorios en Carrito:</h4>
+        <div id="carrito">
+
+        </div>
+        <button class="small primary" onclick="confirmar()">Confirmar Compra</button>
+</div>
+</br></br></br></br></br>
+    <div class="caja">
+        <div class="contenedor1" id="producto">
+    	{% if componente %}
+		<table class="table table-hover" id="tabla_placa">
+		<thead>
+			<tr><th>Componente</th><th>Modelo</th><th>Precio</th><th>Imagen</th><th>Operacion</th></tr>
+		</thead>
+		{% for p in componente %}
+			<body>
+				<tr>
+					<td>{{p.nombre}}</td>
+					<td>{{p.modelo}}</td>
+					<td>$ {{p.precio}}</td>
+					<td><img src='{{MEDIA_URL}}{{p.imagen}}' width="100px" heigth="100px"></td>
+					<td>
+						<a class="btn" href="/vercomponente/{{p.id}}/">
+						<li class="icon-search">Ver</li>
+				</a> | <button class="small success" onClick="comprar({{p.id}},'{{p.nombre}}','{{p.imagen}}')">Comprar</button>
+
+					</td> 
+				</tr>
+			</body>	
+		{% endfor %}
+		</table>
+		{% endif %}
+        <script>
+			$("#tabla_placa").dataTable();
+        </script>
+        <div id="mio" class="reveal-modal">
+            <div id="formulario">
+            </div>
+        </div>
+    </div>
+{% endblock %}
+</div>

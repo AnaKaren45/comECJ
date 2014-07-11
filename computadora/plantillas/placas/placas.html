@@ -1,0 +1,65 @@
+{% extends 'base3.html' %}
+
+{% block title %}Lista de Placas {% endblock %}
+{% block cuerpo %}
+
+	<h2>Lista de Placas: </h2>
+		<a class="btn"href="/addplaca"><li class="icon-plus" ></li>agregar placas</a>	
+	{% if placa %}
+		<center><span style="color: white;">
+		<table class="table table-hover" id="tabla_placa">
+		<thead>
+			<tr>
+				<th>Placa</th>
+				<th>Marca</th>
+				<th>Precio</th>
+				<th>Imagen</th>
+
+			</tr>
+		</thead>
+		{% for p in placa %}
+			<body>
+
+				<tr>
+					<td>{{p.nombre}}</td>
+					<td>{{p.marca}}</td>
+					<td>$ {{p.precio}}</td>
+					<td><img src='{{MEDIA_URL}}{{p.imagen}}' width="150px" heigth="150px"></td>></td>
+					<td><a class="btn" href="/placa/{{p.id}}/"><li class="icon-search"></li>Ver</a></td>
+					<td><a class="btn" href="/edit/placa/{{p.id}}/"><i class="icon-pencil"></i>editar</a></td>
+					<td><a role="button" href="/eliminar/{{p.id}}/" class="btn btn-danger delete"></i>eliminar</a>
+					</td>
+				</tr>
+			</body>
+
+			
+		{% endfor %}
+		</table>
+	{% else %}
+	<center><span style="color: white;">
+		<h2>Lista de placas vacia</h2>
+	{% endif %}
+	<br>
+	{%if placa %}
+		<div class="pagination">
+			<ul>
+			<li><a href="/verplaca/page/1/"> << </a></li>
+			 <!-- paginapreviaprevia-->
+			{% if placa.has_previous %}
+				<li><a href="/verplaca/page/{{placa.previous_page_number}}/">Prev</a></li>
+			{% else %}
+				<li><a href="#">Prev </a></li>
+			{% endif %}
+			<!--pagima sigiente-->
+			{% if placa.has_next %}
+				<li><a href="/verplaca/page/{{placa.next_page_number}}/">Next</a></li>
+			{% else %}
+				<li><a href="#">Next </a></li>
+			{% endif %}
+			<li><a href="/verplaca/page/{{placa.paginator.num_pages}}"> >> </a></li>
+			</ul>
+		</div>
+		<br>
+		<h4> Pagina {{placa.number}} de {{placa.paginator.num_pages}}</h4>
+	{% endif %}	
+{% endblock %}

@@ -1,0 +1,63 @@
+<script>
+function eliminar(id)
+{
+    $.get("/eliminar/carrito/"+id+"/",function(data)
+    {
+        $("#cuerpo").html(data);
+    });
+}
+function guardar()
+{
+   $.get("/guardar/carrito/",function(data)
+    {
+        $("#cuerpo").html(data);
+        alert("Transacción Realizada");
+    });
+}
+</script>
+<div class="example">
+    {% if carr.count > 0 %}
+    <p class="padding10 bg-darkCyan fg-white text-center">
+    <span class="icon-window"></span> Productos de Carrito
+    </p>
+    <table class="table table-hover" id="tabla1">
+    <thead>
+    <tr><th>Producto</th><th>Imagen</th><th>Cantidad</th><th>Precio</th><th>Opciones</th></tr>
+    </thead>
+    <tbody>
+    {% for i in carr %}
+    {% for j in placa %}
+        {% if i.placa == j.id %}
+        <tr>
+                            <td>
+                                {{ j.nombre }}
+                            </td>
+                            <td>
+                                <img src="/media/{{ j.imagen }}" width="75px" height="75px">
+                            </td>
+                            <td>
+                                {{ i.cantidad }}
+                            </td>
+                            <td>
+                                {{ j.precio }}
+                            </td>
+                            <td>
+                            <button class="small danger" onClick="eliminar({{i.id}})">Eliminar</button>
+                            </td>
+        </tr>
+        {% endif %}
+    {% endfor %}
+    {% endfor %}
+    </tbody>
+    </table>
+    <button class="success" onClick="guardar()">Realizar Transaccion</button>
+    
+    <script>
+            $("#tabla1").dataTable();
+    </script>
+    {% else %}
+        <p class="padding10 bg-darkRed fg-white text-center">
+        <span class="icon-window"></span> No Existen Productos en el Carrito
+        </p>
+    {% endif %}
+</div>

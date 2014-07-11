@@ -1,0 +1,15 @@
+{% extends 'base3.html' %}
+{% block cuerpo %}
+<center><span style="color: white;">
+	<h1>Subir Categoria</h1>
+
+		<form action="." method="POST">
+			{% csrf_token %}
+			{{formulario.as_p}}
+			<button type="submit" class="btn btn-small btn-primary">enviar</button>
+			<button type="reset" class="btn btn-small btn-primary">borrar</button>
+		</form><br>
+		{{informacion}}
+		<br>
+		<a class="btn btn-small btn-primary" href="/categoria/page/1/">Regresar al lista de Categorias</a>
+{% endblock %}

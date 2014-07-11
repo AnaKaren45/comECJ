@@ -1,0 +1,112 @@
+{% extends "index.html" %}
+{% block title %}Lista de Placas {% endblock %}
+{% block contenido %}
+<script>
+//<a href="/confirmar/compra/">Confirmar Compra</a>
+function confirmar()
+{
+	$.get("/confirmar/compra1/",function(data)
+	{
+		$("#cuerpo").html(data);
+	});
+}
+function enviar(id,cantidad)
+{
+	$.get("/cliente/carrito/add/"+id+"/"+cantidad+"/",function(data)
+	{
+		$("#carrito").html(data);
+	});
+return false;
+}
+function comprar(id,nombre,img)
+{
+				$.Dialog({
+									shadow: true,
+									overlay: false,
+									draggable: true,
+									icon: '<span class="icon-dollar"></span>',
+									title: 'Draggable window',
+									width: 400,
+									height: 300,
+									padding: 10,
+									content: '',
+									onShow: function(){
+									var content = '<form id="form1" onsubmit="return enviar('+id+',cantidad.value);">'+
+									'<label>'+nombre+'</label>'+
+									'<img src="{{MEDIA_URL}}'+img+'" width="120px" heigth="120px">'+
+									'<label>Cantidad</label>' +
+									'<div class="input-control text"><input type="text" name="cantidad"><button class="btn-clear"></button></div>' +
+									'<button class="primary" onclick="$.Dialog.close()">Añadir a Carrito</button>'+
+									'<button onclick="$.Dialog.close()">Cancelar</button></form>';
+									$.Dialog.title("Añadir a Carrito");
+									$.Dialog.content(content);
+									}
+								});
+}
+</script>
+<div class="example">
+<div id="carrito_content">
+        <h4>Placas  en carrito:</h4>
+        <div id="carrito">
+
+        </div>
+        <button class="small primary" onclick="confirmar()">Confirmar Compra</button>
+</div>
+</br></br></br></br></br>
+    <div class="caja">
+        <div class="contenedor1" id="producto">
+    	{% if placa %}
+		<table class="table table-hover" id="tabla_placa">
+		<thead>
+			<tr><th>Placa</th><th>Marca</th><th>Precio</th><th>Imagen</th><th>Operacion</th></tr>
+		</thead>
+		{% for p in placa %}
+			<body>
+				<tr>
+					<td>{{p.nombre}}</td>
+					<td>{{p.marca}}</td>
+					<td>$ {{p.precio}}</td>
+					<td><img src='{{MEDIA_URL}}{{p.imagen}}' width="100px" heigth="100px"></td>
+					<td>
+						<a class="btn" href="/placas/{{p.id}}/">
+						<li class="icon-search">Ver</li>
+				</a> | <button class="small success" onClick="comprar({{p.id}},'{{p.nombre}}','{{p.imagen}}')">Comprar</button>
+
+					</td> 
+				</tr>
+			</body>	
+		{% endfor %}
+		</table>
+		{% endif %}
+        <script>
+			$("#tabla_placa").dataTable();
+        </script>
+        <div id="mio" class="reveal-modal">
+            <div id="formulario">
+            </div>
+        </div>
+    </div>
+	{%if placa %}
+		<div class="pagination">
+			<ul>
+			<li><a href="/base/page/1/"> << </a></li>
+			 <!-- paginapreviaprevia-->
+			{% if placa.has_previous %}
+				<li><a href="/base/page/{{placa.previous_page_number}}/">Prev</a></li>
+			{% else %}
+				<li><a href="#">Prev </a></li>
+			{% endif %}
+			<!--pagima sigiente-->
+			{% if placa.has_next %}
+				<li><a href="/base/page/{{placa.next_page_number}}/">Next</a></li>
+			{% else %}
+				<li><a href="#">Next </a></li>
+			{% endif %}
+			<li><a href="/base/page/{{placa.paginator.num_pages}}"> >> </a></li>
+			</ul>
+		</div>
+		<br>
+		<h4> Pagina {{placa.number}} de {{placa.paginator.num_pages}}</h4>
+	{% endif %}	
+{% endblock %}
+</div>

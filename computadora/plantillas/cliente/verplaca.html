@@ -1,0 +1,37 @@
+{%extends "index.html" %}
+
+{% block contenido %}
+<div class="example">
+<center><h2>Descripcion</h2></center>
+<table>
+	<tr>
+		<td><h4>Nombre:</h4></td>
+		<td>{{placa.nombre}}</td>
+		<td><img src="/media/{{ placa.imagen }}" width="150px" heigth="150px"/></td>
+	</tr>
+	<tr>
+		<td><h4>Marca:</h4></td>
+		<td>{{placa.marca}}</td>
+	</tr>
+	<tr>
+		<td><h4>Zocalo:</h4></td>
+		<td>{{placa.zocalo}}</td>
+	</tr>
+	<tr>
+		<td><h4>CantBancosM:</h4></td>
+		<td>{{placa.cant_BancosMemoria}}</td>
+	</tr>
+	<tr>
+		<td><h4>CantRanurasPci:</h4></td>
+		<td>{{placa.cant_RanurasPci}}</td>
+	</tr>
+	<tr>
+		<td><h4>Precio:</h4></td>
+		<td> ${{placa.precio}}</td>
+	</tr>
+	
+	
+</table>
+<a href="javascript:window.history.go(-1);" class="btn btn-primary"><h3>Regresar a la lista</h3></a>
+{% endblock %}
+</div>

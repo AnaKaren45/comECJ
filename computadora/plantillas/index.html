@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <title>Sistema de ventas</title>
+        <link rel="stylesheet" href="/static/css/metro-bootstrap.css">
+		<link href="/static/css/metro-bootstrap-responsive.css" rel="stylesheet">
+		<link href="/static/css/iconFont.css" rel="stylesheet">
+		<link href="/static/css/docs.css" rel="stylesheet">
+		<link href="/static/js/prettify/prettify.css" rel="stylesheet">
+		
+
+		<link rel="stylesheet" href="{{ STATIC_URL }}css/estilo.css"/>
+	    <link rel="stylesheet" href="{{ STATIC_URL }}css/reveal.css"/>
+	    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.6.3.min.js"></script>
+	    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.reveal.js"></script>
+	    <script type="text/javascript" src="{{ STATIC_URL }}js/script.js"></script>
+	    <link rel="stylesheet" href="{{ STATIC_URL }}jqtransformplugin/jqtransform.css">
+	    <script type="text/javascript" src="{{ STATIC_URL }}jqtransformplugin/jquery.jqtransform.js"></script>
+
+		<script src="/static/js/jquery/jquery.min.js"></script>
+        <script src="/static/js/jquery/jquery.widget.min.js"></script>
+        <script src="/static/js/metro/metro.min.js"></script>
+        <script src="/static/js/demo.js"></script>
+
+		<script src="/static/js/docs.js"></script>
+		<script src="/static/js/prettify/prettify.js"></script>
+		<script src="/static/js/jquery/jquery.dataTables.js"></script>
+		<script src="/static/js/livevalidation_standalone.compressed.js"></script>
+
+		<script language="javascript">
+	        $(document).ready(function(){
+	        	$("form").jqTransform({imgPath:'jqtransformplugin/img/'});
+	        });
+    	</script>
+    </head>
+
+    <body class="metro" style="background-color: #efeae3">
+	
+	<div class="navigation-bar dark">
+	<div class="navigation-bar-content container">
+	<a href="/categorias/" class="element"><span class="icon-grid-view"></span> <sup>1.0</sup></a>
+	<span class="element-divider"></span>
+	<a class="element1 pull-menu" href="#"></a>
+	<span class="element-divider place-right"></span>
+	<button class="element image-left place-right" id="login">
+		<a href="/logeo" class="archives"><span class="icon-user"></span> INICIAR SECION
+	</button>
+	</div>
+	</div>
+	
+		<div class="">
+			<!--Banner-->
+			<div style="background: url(/static/images/b1.jpg) top left no-repeat; background-size: cover; height: 300px;" >
+				<div class="container" style="padding: 20px 0px" >
+				
+				<h1 class="fg-white"> PC</h1>
+					<h2 class="fg-white">
+						<br /> 
+					</h2>
+					
+					<div class="tile double bg-darkRed" id="add-usuario">
+						<a href="/armar">
+						<div class="tile-content icon">
+						<img src="/static/images/armado.png">
+						<!--<i class="icon-user"></i>-->
+						</div></a>			
+						<div class="tile-status">
+						<span class="name" >Arma Tu PC </span>
+						</div><a>
+					</div>
+					<div class="tile double bg-darkViolet" id="list-cotizacion">
+						<a href="/base/page/1/">
+						<div class="tile-content icon">
+						<i class="icon-cog"></i>
+						</div>			
+						<div class="tile-status">
+						<span class="name">Placas</span>
+						</div></a>	
+					</div>
+					<div class="tile double bg-cyan" id="list-cambio">
+						<a href="/compo/page/1/">
+						<div class="tile-content icon">
+						<img src="/static/images/info.png">
+						<!--<i class="icon-dollar-2"></i>-->
+						</div>				
+						<div class="tile-status">
+						<span class="name" >Accesorios </span>
+						
+						</div></a>
+					</div>
+
+					<div class="tile double bg-green">
+						<a href="/ventas/">
+						<div class="tile-content icon">
+						<img src="/static/images/imprimir.png">
+						</div>				
+						<div class="tile-status">
+						<span class="name" >Ventas </span>
+						</div></a>
+					</div>
+
+				</div>
+			</div>
+			<!--Fin Banner-->
+			<!--Inicio Contenedor-->
+			<div class="container">
+				<div class="grid no-margin">
+					<div class="row">
+						<div class="span4 no-tablet-portrait no-phone">
+							<div class="listview">
+								<a href="" class="list bg-lightBlue fg-white">
+									
+									<div class="list-content">
+										<img src="/static/images/compu.png" class="icon">
+										<br><br><br><br><br>										
+										<div class="data">
+											<span class="list-title">Microsoft Office Word 2013</span>
+											<div class="rating small no-margin fg-yellow" data-score="4" data-role="rating" data-stars="5"><ul style="margin-bottom: 0px;"><li class="rated"></li><li class="rated"></li><li class="rated"></li><li class="rated"></li><li></li></ul></div>
+											<span class="list-remark">Descargar Manual de Usuario</span>
+										</div>
+										
+									</div>
+								</a>
+								
+							</div>
+						</div>
+						<div class="span8" id="cuerpo">
+							<p class="padding10 bg-darkRed fg-white text-center">
+							<span class="icon-warning"></span> Lista 
+							</p>
+							{% block contenido %}
+
+							{% endblock%}
+							
+						</div>
+
+							<div class="data">
+											<span class="list-title">Microsoft Office Word 2013</span>
+											<div class="rating small no-margin fg-yellow" data-score="4" data-role="rating" data-stars="5"><ul style="margin-bottom: 0px;"><li class="rated"></li><li class="rated"></li><li class="rated"></li><li class="rated"></li><li></li></ul></div>
+											<img src="/static/images/imprimir.png">
+											<span class="list-remark">Descargar Manual de Usuario</span>
+							</div>
+
+					</div>
+
+
+
+				</div>
+			</div>
+			<!--Fin Contenedor-->
+		</div>
+		<!--Fin Cuerpo-->
+
+		
+	<div class="bg-darkRed">
+				<div class="container" style="padding: 10px 0;">
+
+					<div class="grid no-margin">
+						<div class="row no-margin">						
+						<div class="image-container selected span2">
+								<img src="/static/images/gal3.jpg">
+							</div>
+							<div class="span6 padding10">
+								<h3 class="fg-white">Informacion</h3>
+								<p class="fg-white">Bienvenido a nuestra pagina.Aqui podras acceder a lo ultimo en tecnologia de computadoras y podras armar tu equipo de computo segun tus requerimientos necesarios.</p>
+							</div>
+							<div class="span3 padding10">
+							
+							</div>
+						</div>
+					</div>
+				</div>
+				<br>
+				<br>
+
+				<!--<div class="container tertiary-text bg-darkRed fg-white" style="padding: 10px">
+					2014-2015, UATF &copy; por  <a href="mailto:xyz@hotmail.com" class="fg-yellow">DarkSoft</a>
+				</div>-->
+	</div>
+	</body>
+</html>

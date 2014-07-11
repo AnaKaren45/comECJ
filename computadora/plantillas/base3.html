@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Armado| Pc</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Starter files for implementing Twitter Bootstrap's Carousel -- using Bootstrap version 2.0.4">
+    <meta name="author" content="David Cochran for webdesign.tutsplus.com">
+
+    <!-- Le styles -->
+    {% block cabesa %}<script src="{{STATIC_URL}}jquery.min.js"></script>{% endblock %}
+    
+    <link href="{{STATIC_URL}}bootstrap/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+        background-color: #333333;
+      }
+    </style>
+    <link href="{{STATIC_URL}}bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+
+          <div class="span2"><a class="brand" href="#"><img src="#"  width="80%"></a></div><br><div class="span9" style="background-color:#E7E1E1; ">
+          
+          <div class="navbar-inner">
+            <ul class="nav">
+              <li class="active"><a href="/principal1">Inicio</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      Placa
+                      <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu" >
+                  <li><a href="/addplaca">Agregar</a></li>
+                  <li><a href="/verplaca/page/1/">Ver</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      Categoria
+                      <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu" >
+                  <li><a href="/addcategoria">Agregar</a></li>
+                 <li><a href="/categoria/page/1/">ver</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      Componente
+                      <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu" >
+                  <li><a href="/addcomponente">Agregar</a></li>
+                  <li><a href="/componente/page/1/">Ver</a></li>
+                </ul>
+              </li>    
+               
+              
+              
+              <li><a href="/cerrar">Salir</a></li><!-- dropdown -->
+            </ul><!-- /.nav -->
+          </div><!--/.nav-collapse -->
+        </div><!-- /.container -->
+      </div><!-- /.navbar-inner -->
+    </div><!-- /.navbar -->
+</div><div class="span1"></div>
+{% block carrusel %}
+    <div class="container">
+
+      <!--  Carousel -->
+      <!--  consult Bootstrap docs at 
+            http://twitter.github.com/bootstrap/javascript.html#carousel -->
+      <div id="this-carousel-id" class="carousel slide">
+        <div class="carousel-inner">
+          <div class="item active">
+            <img src="/static/bootstrap/img/03.jpg"/>
+            </a>
+            <div class="carousel-caption">
+            </div>
+          </div>
+          <div class="item">
+              <img src="/static/bootstrap/img/04.jpg"/>
+            </a>
+            <div class="carousel-caption">
+            </div>
+          </div>
+          <div class="item">
+            <a href="http://hubblesite.org/gallery/album/entire/pr2003010i/npp/128/">
+              <img src="/static/bootstrap/img/05.jpg" alt="Light Echo" />
+            </a>
+            <div class="carousel-caption">
+            </div>
+          </div>
+          
+          </div>
+        </div><!-- .carousel-inner -->
+        <!--  next and previous controls here
+              href values must reference the id for this carousel -->
+          <a class="carousel-control left" href="#this-carousel-id" data-slide="prev">&lsaquo;</a>
+          <a class="carousel-control right" href="#this-carousel-id" data-slide="next">&rsaquo;</a>
+      </div><!-- .carousel -->
+      <!-- end carousel -->
+{% endblock %}
+      <!-- Example row of columns -->
+  
+
+      {% block cuerpo %}
+      {% endblock %}
+
+      
+
+    </div> <!-- /container -->
+
+    
+    <script>window.jQuery || document.write('{{STATIC_URL}}bootstrap/js/jquery-1.7.2.min.js"><\/script>')</script>
+    
+    <!-- Bootstrap jQuery plugins compiled and minified -->
+    <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $('.carousel').carousel({
+          interval: 4000
+        });
+      });
+    </script>
+
+  </body>
+</html>

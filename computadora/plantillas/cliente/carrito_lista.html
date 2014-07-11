@@ -1,0 +1,11 @@
+
+{% block carrito lista %}
+    <div class="caja">
+        <div class="contenedor" id="producto">
+           <label>ID :</label>  {{ p.id }} </br>
+           <label>Nombre :</label>{{ p.nombre }} </br>
+            <img src="/media/{{ producto.imagen }}"> </br>
+           <label>Precio</label> {{ p.precio }} $</br>
+        </div>
+    </div>
+{% endblock %}

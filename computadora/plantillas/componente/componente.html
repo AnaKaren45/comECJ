@@ -1,0 +1,60 @@
+{% extends 'base3.html' %}
+{% block title %}Lista de Componentes {% endblock %}
+{% block cuerpo %}
+<center><span style="color: white;">
+
+	<h2>Lista de Componentes: </h2>
+		<a class="btn"href="/addcomponente"><li class="icon-plus"></li>agregar componente</a>	
+	{% if componente %}
+		<table class="table table-hover" id="tabla_componente">
+			<thead>
+				<tr>
+					<th>Nombre</th>
+					<th>Modelo</th>
+					<th>Precio</th>
+					<th>Imagen</th>
+
+				</tr>
+			</thead>
+			{% for c in componente %}
+				<body>
+					<tr id="tr{{c.id}}">
+						<td>{{c.nombre}}</td>
+						<td>{{c.modelo}}</td>
+						<td>$ {{c.precio}}</td>
+						<td><img src='{{MEDIA_URL}}{{c.imagen}}' width="150px" heigth="150px"></td>
+						<td><a class="btn" href="/componentes/{{c.id}}/"><li class="icon-search"></li>Ver</a></td>
+						<td><a class="btn" href="/edit/componentes/{{c.id}}/"><i class="icon-pencil"></i>editar</a></td>
+						<td><a role="button" href="/eliminar/comp/{{c.id}}/" class="btn btn-danger delete"></i>eliminar</a>
+					</td>
+					</tr>
+				</body>
+			{% endfor %}
+		</table>
+	{% else %}
+		<h2>Lista de componentes vacia</h2>
+	{% endif %}
+	<br>
+	{%if componente %}
+		<div class="pagination">
+			<ul>
+			<li><a href="/componente/page/1/"> << </a></li>
+			 <!-- paginapreviaprevia-->
+			{% if componente.has_previous %}
+				<li><a href="/componente/page/{{componente.previous_page_number}}/">Prev</a></li>
+			{% else %}
+				<li><a href="#">Prev </a></li>
+			{% endif %}
+			<!--pagima sigiente-->
+			{% if componente.has_next %}
+				<li><a href="/componente/page/{{componente.next_page_number}}/">Next</a></li>
+			{% else %}
+				<li><a href="#">Next </a></li>
+			{% endif %}
+				<li><a href="/componente/page/{{componente.paginator.num_pages}}"> >> </a></li>
+			</ul>
+		</div>
+		<br>
+		<h4> Pagina {{componente.number}} de {{componente.paginator.num_pages}}</h4>
+	{% endif %}	
+{% endblock %}

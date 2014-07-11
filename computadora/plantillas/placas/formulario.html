@@ -1,0 +1,18 @@
+<script type="text/javascript"></script>
+    {% if compo.count == 0 %}
+        <label><b>No existe componentes de esa categoria</b></label>
+    {% else %}
+        {% for i in catego %}
+                 <label style="text-transform: uppercase"><b>{{ i.nombre }} compatibles :</b></label>
+            <div class="input-control select">
+              <select name="categoria{{i.id}}" id="categoria{{i.id}}">
+                <option value="0">Selecciona</option>
+                {% for j in compo %}
+                    {% if j.Categoria.id == i.id %}
+                        <option value="{{j.id}}">{{ j.nombre}}</option> 
+                    {% endif %}
+                {% endfor %}
+              </select>   
+            </div>
+        {% endfor %}
+    {% endif %}

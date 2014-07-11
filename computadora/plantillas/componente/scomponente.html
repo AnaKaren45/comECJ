@@ -1,0 +1,49 @@
+{% extends 'base3.html' %}
+{% block title %} Componente {{componente.nombre}} {% endblock %}
+{% block cuerpo %}
+<center><span style="color: white;">
+	<center><h2>Descripcion</h2></center>
+	<table>
+	<tr>
+		<td><h4>Categoria:</h4></td>
+		<td>
+			{% for cat in categorias %}
+			<span class="label label-info">{{cat.nombre}}</span>
+			{% endfor %}
+		</td>
+	</tr>
+	<tr>
+		<td><h4>Nombre:</h4></td>
+		<td>{{componente.nombre}}</td>
+		<td><img src="/media/{{ componente.imagen }}" width="150px" heigth="150px"/></td>
+	</tr>
+
+	<tr>
+		<td><h4>Modelo:</h4></td>
+		<td>{{componente.modelo}}}</td>
+	</tr>
+	<tr>
+		<td><h4>Marca:</h4></td>
+		<td>{{componente.marca}}</td>
+	</tr>
+	<tr>
+		<td><h4>Detalle:</h4></td>
+		<td>{{componente.detalle}}</td>
+	</tr>
+	<tr>
+		<td><h4>Cantidad:</h4></td>
+		<td>{{componente.cantidad}}</td>
+	</tr>
+	<tr>
+		<td><h4>Precio:</h4></td>
+		<td>{{componente.precio}}</td>
+	</tr>
+	
+</table>
+
+	<br>
+	<a href="javascript:window.history.go(-1);" class="btn btn-primary">regresar a la lista </a>
+		
+	
+{% endblock %}
+

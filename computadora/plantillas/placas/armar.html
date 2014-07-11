@@ -1,0 +1,107 @@
+{% extends 'index.html' %}
+{% block title %}Lista de Placas {% endblock %}
+{% block contenido %}
+
+    <script>
+        function fcategoria(){
+            var placa= $("#splaca").val();
+            if(placa!=0)
+            {
+                    $.ajax({
+                        type:'POST',
+                        url:"/armar/",
+                        data: $("#farmar").serialize(),
+                        success: crearFormulario,
+                        error:errores
+                    });
+            }
+            else
+            {
+                alert("Selecciona la placa")
+            }
+        }
+        function crearFormulario(data){
+            $("#formulario").html(data);
+             //alert("llego");
+        }
+        function errores(){
+            alert("error en el servidor");
+        }
+        function fvalidar(){
+            var placa= $("#splaca").val();
+            if(placa==0)
+            {
+                alert("Selecciona la placa");
+                return false;
+            }
+            else
+            {
+
+                var pro= $("#categoria1").val();
+                if(pro==0)
+                {
+                    alert("Selecciona el Procesador");
+                    return false;
+                }
+                 var sonido= $("#categoria2").val();
+                if(sonido==0)
+                {
+                    alert("Selecciona Tarjeta Sonido");
+                    return false;
+                }
+                var video= $("#categoria3").val();
+                if(video==0)
+                {
+                    alert("Selecciona Tarjeta Video");
+                    return false;
+                }
+                var ram= $("#categoria4").val();
+                if(ram==0)
+                {
+                    alert("Selecciona Memoria Ram");
+                    return false;
+                }
+                
+            }
+            return true;
+        }
+    </script>
+<div class="example">    
+        {% if placa %}
+        <p class="padding10 bg-darkBlue fg-white text-center">
+        <span class="icon-window"></span> Arma tu PC
+        </p>
+        <form action="/crear/catalogo/" method="post" id="farmar" onSubmit="return fvalidar()">
+        {% csrf_token %}
+        <table>
+        <tr>
+            <td>
+                <label>PLACA:</label>
+                <div class="input-control select">
+                <select id="splaca" name="splaca" onchange="fcategoria()">
+                    <option value="0" id="0">Selecciona</option>
+                    {% for i in placa %}
+                    <option value="{{ i.id }}" id="{{ i.id }}">{{i.nombre}}</option>
+                    {% endfor %}
+                </select>
+                </div>
+           </td>
+            <td>
+                <div id="formulario">
+                </div>
+            </td>
+        </tr>
+        <tr>
+        <td>
+        <button class="large primary">Crear Catalogo</button>
+        </form>
+        </td>
+        </tr>
+    {% else %}
+        <p class="padding10 bg-darkRed fg-white text-center">
+        <span class="icon-warning"></span> Lista de Placas Vacia
+        </p>
+    {% endif %}
+</table>
+</div>
+{% endblock %}

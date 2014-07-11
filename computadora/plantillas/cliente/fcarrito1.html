@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+{% block contenido %}
+
+<form action="/cliente/carrito/add/{{ pro.id }}/" method="post" id="fcarrito">
+    {% csrf_token %}
+    <h3>Nombre: {{ pro.nombre }}</h3>
+    <p><img src="/media/{{ pro.imagen }}"></p>
+    {{ fcarr }}
+    <input type="submit" value="Añadir a Carrito">
+</form>
+{%endblock%}

@@ -1,0 +1,42 @@
+
+{% block contenido %}
+
+    <style>
+     h2{color: white; display: block; background: royalblue; padding: 10px; text-align: center;}
+     table { padding: 5px;}
+     th{ color: midnightblue; background: skyblue;}
+     td{text-align: center;}
+    </style>
+<table border="1px" width="80%" align="center">
+    <th>
+            nombre placa
+        </th>
+        <th>
+            imagen
+        </th>
+        <th>
+            marca
+        </th>
+        <th>
+            precio
+        </th>
+        {% for i in reservas %}
+            <tr>
+                <td>
+                    {{ i.nombre }}
+                </td>
+                <td>
+                    {{ i.imagen }}
+                </td>
+                <td>
+                    {{ i.marca }}
+                </td>
+                <td>
+                    {{ i.precio }}
+                </td>
+                
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+

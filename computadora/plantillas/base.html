@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Sistema de ventas</title>
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/estilo.css"/>
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/reveal.css"/>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.6.3.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.reveal.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/script.js"></script>
+    <link rel="stylesheet" href="{{ STATIC_URL }}jqtransformplugin/jqtransform.css">
+    <script type="text/javascript" src="{{ STATIC_URL }}jqtransformplugin/jquery.jqtransform.js"></script>
+    <script language="javascript">
+        $(function(){
+            $("form").jqTransform({imgPath:'jqtransformplugin/img/'});
+        });
+    </script>
+</head>
+<body>
+<div id="pagina">
+	<div class="main">
+		<div id="barra-herramientas">
+		   <ul>
+			<li>
+				<a href="/">Principal</a>
+			</li>
+            {% if user.is_authenticated %}
+            <li>
+                <a href="/usuario/salir/">Salir</a>
+            </li>
+            {% endif %}
+               <li>
+                   <form action="/buscar/" name="" id="fbuscar" method="post">
+                       {% csrf_token %}
+                       <label>Buscar producto :</label><input id="id_texto" maxlength="50" name="texto" type="text" />
+                       <input type="submit" value="Buscar">
+                   </form>
+                   <div class="resultados">
+                   </div>
+               </li>
+		   </ul>
+		</div>
+    {% block contenido %}
+    {% endblock %}
+
+    {% block producto %}
+    {% endblock %}
+
+	</div>
+</div>
+</body>
+</html>

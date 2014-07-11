@@ -1,0 +1,51 @@
+{% extends 'base3.html' %}
+{% block title %}Lista de Categorias {% endblock %}
+{% block cuerpo %}
+<center><span style="color: white;">
+	<h2>Lista de Categorias: </h2>
+		<a class="btn"href="/addcategoria"><li class="icon-plus"></li>agregar Categoria</a>	
+	{% if categoria %}
+		<table class="table table-hover" id="tabla_categoria">
+			<thead>
+				<tr><th>Nombre</th></tr>
+			</thead>
+			{% for c in categoria %}
+				<body>
+					<tr id="tr{{c.id}}">
+						<td>{{c.nombre}}</td>
+						<td><a role="button" href="/eliminar/cat/{{c.id}}/" class="btn btn-danger delete"></i>eliminar</a>
+					</tr>
+				</body>
+			{% endfor %}
+		</table>
+	{% else %}
+		<h2>Lista de categorias vacias</h2>
+	{% endif %}
+	<!-- PAGINADOR-->
+	<br>
+	{% if categoria %}
+		<div class="pagination">
+			<ul>
+				<li><a href="/categoria/page/1/"> << </a></li>
+			 	<!-- paginapreviaprevia-->
+				{% if categoria.has_previous %}
+					<li><a href="/categoria/page/{{categoria.previous_page_number }}/">Prev</a></li>
+				{% else %}
+					<li><a href="#"> Prev </a></li>
+				{% endif %}
+				<!--pagima sigiente-->
+				{% if categoria.has_next %}
+					<li><a href="/categoria/page/{{categoria.next_page_number }}/"> Next </a></li>
+				{% else %}
+					<li><a href="#"> Next </a></li>
+				{% endif %}
+					<li><a href="/categoria/page/{{categoria.paginator.num_pages }}/"> >> </a></li>
+			</ul>
+		</div>
+		<br>
+		<h4> Pagina {{categoria.number}} de {{categoria.paginator.num_pages}}</h4>
+	{% endif %}	
+{% endblock %}
+
+
+

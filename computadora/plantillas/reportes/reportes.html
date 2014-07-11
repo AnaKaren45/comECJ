@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Reporte de ventas</title>
+</head>
+<body>
+     <style>
+     h2{color: white; display: block; background: royalblue; padding: 10px; text-align: center;}
+     table { padding: 5px;}
+     th{ color: midnightblue; background: skyblue;}
+     td{text-align: center;}
+    </style>
+    <div>
+        <h2>Proforma</h2>
+    </div>
+    <table border="1px" width="80%" align="center">
+   
+        <th>
+            nombre placa
+        </th>
+        <th>
+            imagen
+        </th>
+        <th>
+            marca
+        </th>
+        <th>
+            precio
+        </th>
+            <tr>
+                <td>
+                    {{ placa.nombre }}
+                </td>
+                <td>
+                    <img src="{{ placa.imagen.path }}"/>
+                </td>
+                <td>
+                    {{ placa.marca }}
+                </td>
+                <td>
+                    {{ placa.precio }}
+                </td>
+                
+            </tr>
+            <tr>
+                <td colspan="4">COMPONENTE: PROCESADOR
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{ compo_pro.nombre }}
+                </td>
+                <td>
+                    <img src="{{ compo_pro.imagen.path }}"/>
+                </td>
+                <td>
+                    {{ compo_pro.marca }}
+                </td>
+                <td>
+                    {{ compo_pro.precio }}
+                </td>
+                
+            </tr>
+            <tr>
+                <td colspan="4">COMPONENTE: VIDEO
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{ compo_video.nombre }}
+                </td>
+                <td>
+                    <img src="{{ compo_video.imagen.path }}"/>
+                </td>
+                <td>
+                    {{ compo_video.marca }}
+                </td>
+                <td>
+                    {{ compo_video.precio }}
+                </td>
+                
+            </tr>
+            <tr>
+                <td colspan="4">COMPONENTE: SONIDO
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{ compo_sonido.nombre }}
+                </td>
+                <td>
+                    <img src="{{ compo_sonido.imagen.path }}"/>
+                </td>
+                <td>
+                    {{ compo_sonido.marca }}
+                </td>
+                <td>
+                    {{ compo_sonido.precio }}
+                </td>
+                
+            </tr>
+             <tr>
+                <td colspan="4">COMPONENTE: MEMORIA RAM
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{ memoria_ram.nombre }}
+                </td>
+                <td>
+                    <img src="{{memoria_ram.imagen.path }}"/>
+                </td>
+                <td>
+                    {{ memoria_ram.marca }}
+                </td>
+                <td>
+                    {{ memoria_ram.precio }}
+                </td>
+                
+            </tr>
+             <tr>
+                <td>
+                    <b>Total</b>
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                    <b>{{total}}</b>
+                </td>
+                
+            </tr>
+    </table>
+  
+</body>
+</html>
